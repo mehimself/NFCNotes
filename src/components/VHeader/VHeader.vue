@@ -9,7 +9,7 @@
     >
       <v-toolbar-title>
         <v-btn icon large>
-          <v-logo :tumble="true"/>
+          <v-logo />
         </v-btn>
       </v-toolbar-title>
       <v-toolbar-items>
@@ -34,12 +34,17 @@
           </span>
         </v-btn>
       </v-toolbar-items>
+      <v-spacer></v-spacer>
+      <v-btn icon large>
+        <v-datakuben-logo/>
+      </v-btn>
     </v-toolbar>
   </div>
 </template>
 
 <script>
   import { mapState } from 'vuex'
+  import VLDatakubenLogo from '../VDatakubenLogo'
   import VLogo from '../VLogo'
 
   export default {
@@ -61,7 +66,8 @@
       ])
     },
     components: {
-      VLogo
+      VLogo,
+      VLDatakubenLogo
     }
   }
 </script>
