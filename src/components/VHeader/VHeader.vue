@@ -35,6 +35,7 @@
         </v-btn>
       </v-toolbar-items>
       <v-spacer></v-spacer>
+
       <v-btn icon large>
         <v-datakuben-logo/>
       </v-btn>
@@ -44,7 +45,7 @@
 
 <script>
   import { mapState } from 'vuex'
-  import VLDatakubenLogo from '../VDatakubenLogo'
+  import VDatakubenLogo from '../VDatakubenLogo'
   import VLogo from '../VLogo'
 
   export default {
@@ -67,7 +68,7 @@
     },
     components: {
       VLogo,
-      VLDatakubenLogo
+      VDatakubenLogo
     }
   }
 </script>

@@ -29,7 +29,7 @@
       },
       'flat': {
         default: null,
-        type: String
+        type: Boolean
       },
       'tumble': {
         default: null,

@@ -1,3 +1,3 @@
-import Logo from './VLogo.vue'
+import Module from './VLogo.vue'
 
-export default Logo
+export default Module

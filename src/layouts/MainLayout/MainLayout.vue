@@ -1,8 +1,8 @@
 <template>
   <v-app id="inspire">
     <v-header></v-header>
-    <div style="position: absolute; top: 80px; left: 248px;">
-      <v-logo :size="32" :flat="animate"></v-logo>
+    <div style="position: absolute; top: 80px; left: 248px;" @click="createPulse"><!-- todo: remove click-->
+      <v-logo size="32" :flat="animate"></v-logo>
     </div>
     <v-content>
       <router-view></router-view>
@@ -14,14 +14,14 @@
   import VHeader from '../../components/VHeader'
   import VLogo from '../../components/VLogo'
   export default {
-    data: () => ({
-      windowSize: 800
-    }),
-    props: {
-    },
     computed: {
-      logoSize: function () {
-        return String(this.windowSize / 80)
+      animate: function () {
+        return this.$store.state.tagReadPulse
+      }
+    },
+    methods: {
+      createPulse: function () { // todo: dispatch from websocket
+        this.$store.dispatch('SET_TAGREADPULSE')
       }
     },
     components: {
