@@ -1,6 +1,6 @@
+import {startRecording, stopRecording} from '../ARecord'
 const express = require('express')
 const router = express.Router()
-import {startRecording, stopRecording} from '../ARecord'
 
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' })

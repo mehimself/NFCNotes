@@ -2,7 +2,7 @@ import path from 'path'
 import process from 'child_process'
 
 let ARecord
-function startRecording() {
+export function startRecording() {
   let ARecord = process.spawn(
     'arecord',
     [
@@ -18,14 +18,16 @@ function startRecording() {
   )
   ARecord.stdin.pause() // todo: test: allow node to progress
 }
-function endRecording() {
+export function stopRecording() {
   ARecord.kill()
 }
 ARecord.stderr.on('data', function (data) {
   console.error('arecord error: ' + data)
 })
 ARecord.on('close', function (code) {
-  console.log('arecord child process exited with code ' + code);
-});
-export const startRecording
-export const stopRecording
+  if (code) {
+    console.warn('arecord child process exited with code ' + code)
+  } else {
+    console.log('arecord child process exited with code ' + code)
+  }
+})
