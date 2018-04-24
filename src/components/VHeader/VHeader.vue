@@ -5,7 +5,7 @@
       app
       :clipped-left="$vuetify.breakpoint.lgAndUp"
       fixed
-      :lass="recording"
+      :class="{recording: recording}"
     >
       <v-toolbar-title>
         <v-btn icon large>
@@ -62,9 +62,11 @@
     computed: {
       ...mapState([
         'appColors',
-        'pageColor',
-        'recording'
-      ])
+        'pageColor'
+      ]),
+      recording: function () {
+        return this.$store.state.recording
+      }
     },
     components: {
       VLogo,

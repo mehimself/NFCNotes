@@ -12,7 +12,6 @@ const mutations = {
   },
   [types.SET_TAGREADPULSE](state, value) {
     state.tagReadPulse = value
-    console.log('pulse mutation', state.tagReadPulse)
   }
 }
 

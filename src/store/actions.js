@@ -10,10 +10,11 @@ const actions = {
   countDecrement({commit}) {
     commit(types.COUNT_DECREMENT)
   },
-  [types.SET_RECORDING]({commit, value}) {
+  [types.SET_RECORDING]({commit}, value) {
     commit(types.SET_RECORDING, value)
   },
   [types.SET_TAGREADPULSE]({commit}) {
+    // create pulse
     if (pulseTimeout) {
       clearTimeout(pulseTimeout)
     }
