@@ -35,10 +35,20 @@
         </v-btn>
       </v-toolbar-items>
       <v-spacer></v-spacer>
-
-      <v-btn icon large>
-        <v-datakuben-logo/>
-      </v-btn>
+      <v-tooltip left>
+        <v-btn
+          slot="activator"
+          icon
+          large
+          @click="gotoDATAKUBEN"
+        >
+          <v-datakuben-logo/>
+        </v-btn>
+        <span>
+          <v-icon class="white--text">link</v-icon>
+          powered by DATAKUBEN
+        </span>
+      </v-tooltip>
     </v-toolbar>
   </div>
 </template>
@@ -66,6 +76,11 @@
       ]),
       recording: function () {
         return this.$store.state.recording
+      }
+    },
+    methods: {
+      gotoDATAKUBEN: function () {
+        window.location.href = 'http://datakuben.sdu.dk'
       }
     },
     components: {
