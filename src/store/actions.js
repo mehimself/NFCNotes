@@ -5,7 +5,7 @@ const pulseDuration = 2000
 let pulseTimeout = null
 
 const actions = {
-  [types.SET_RECORDING]({commit}, value) {
+  [types.SET_RECORDING]({commit, dispatch}, value) {
     const starting = value
     let promise
     if (starting) {
@@ -14,6 +14,7 @@ const actions = {
       promise = axios.put('/api/stopRecording')
     }
     promise.then(function () {
+      dispatch(types.SET_TAGS, [])
       commit(types.SET_RECORDING, value)
     })
   },
@@ -27,11 +28,9 @@ const actions = {
     }, pulseDuration)
     commit(types.SET_TAGREADPULSE, true)
   },
-  [types.SET_TAGS]({state, commit}) {
-    const LSTags = localStorage.getItem('tags')
-    if (LSTags.length && !state.tags.length) {
-      commit(types.SET_TAGS, LSTags)
-    }
+  [types.SET_TAGS]({state, commit}, value) {
+    localStorage.setItem('tags', value)
+    commit(types.SET_TAGS, value)
   },
   [types.POST_TAG]({commit}, tagId) {
     const newTag = {
