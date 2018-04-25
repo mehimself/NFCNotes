@@ -14,7 +14,8 @@ const state = {
   parchmentColorArray: ['#A1887F', '#FFD9A0', '#A1887F', '#A1887F', '#FFD9A0', '#A1887F'],
   avatarColorArray: ['#FFFFFF', '#777777'],
   recording: false,
-  tagReadPulse: false
+  tagReadPulse: false,
+  tags: []
 }
 
 export default state

@@ -5,11 +5,21 @@ import './style/style.scss'
 import 'vuetify/dist/vuetify.min.css'
 import Vuetify from 'vuetify'
 
+import VueNativeSock from 'vue-native-websocket'
 import router from './router'
 import MainLayout from './layouts/MainLayout'
 import store from './store'
 
 Vue.use(Vuetify)
+Vue.use(
+  VueNativeSock,
+  'ws://localhost:3001',
+  {
+    store: store,
+    reconnection: true,
+    format: 'json'
+  }
+)
 
 /* eslint-disable no-new */
 new Vue({

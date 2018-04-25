@@ -1,3 +1,4 @@
+const WebsocketManager = require('./WebSocketService')
 const express = require('express')
 const debug = require('debug')('app:server')
 const history = require('connect-history-api-fallback')
@@ -7,12 +8,19 @@ const config = require('../config/project.config')
 const {__DEV__, __PROD__, __TEST__} = config.globals
 
 const app = express()
+const api = require('./api')
+const ws = new WebsocketManager()
 
 app.use(history())
+app.use(function (req, res, next) {
+  console.log(req.path)
+  next()
+})
 app.use(function insertCSPHeader(req, res, next) {
   res.setHeader('Content-Security-Policy', 'font-src \'self\' data:;')
   return next()
 })
+app.use('/api', api)
 
 if (__DEV__) {
   debug('Enabling webpack dev and HMR middleware')

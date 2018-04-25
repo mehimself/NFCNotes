@@ -38,9 +38,9 @@
       }
     },
     computed: {
-      ...mapState([
-        'recording'
-      ]),
+      recording: function () {
+        return this.$store.state.recording
+      },
       buttonColor: function () {
         return this.recording ? 'red' : ''
       }

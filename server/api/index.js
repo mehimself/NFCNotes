@@ -1,19 +1,16 @@
-import {startRecording, stopRecording} from '../ARecord'
+const ARecord = require('../ARecord')
 const express = require('express')
 const router = express.Router()
 
-router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' })
-})
-
 router.put('/startRecording', function (req, res) {
-  startRecording()
+  console.log('starting recording')
+  // ARecord.startRecording()
   res.end()
 })
 router.put('/stopRecording', function (req, res) {
-  stopRecording()
+  console.log('stopping recording')
+  // ARecord.stopRecording()
   res.end()
 })
-
 
 module.exports = router
