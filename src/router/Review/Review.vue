@@ -4,29 +4,55 @@
       <v-flex xs10 offset-xs1>
         <v-card class="dark">
           <v-card-title primary-title>
-            <h1>NFC Notes</h1>
+            <audio controls>
+              <source :src="'/recordings/' + mostRecentRecordingName" type="audio/wav"><!-- todo: switch to recording.wav -->
+              Your browser does not support the audio element.
+            </audio>
           </v-card-title>
-          <v-card-text>
-            <h4>
-              Place a note on the reader to replay its clip
-            </h4>
-            <p>
-              adjust the time to loop the clip
-            </p>
-            <p>
-              name and annotate the clip for later review
-            </p>
-          </v-card-text>
+          <v-container fluid v-bind="{ [`grid-list-${size}`]: true }">
+            <v-layout row wrap>
+              <v-flex
+                xs4
+                v-for="n in 9"
+                :key="n"
+              >
+                <v-card flat tile>
+                  <v-card-text class="black--text">
+                    {{n * Math.round(Math.random() * 60000)}} (
+                    {{Math.round(Math.random() * 60)}}s )
+                  </v-card-text>
+                </v-card>
+              </v-flex>
+            </v-layout>
+          </v-container>
         </v-card>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 <script>
+  import moment from 'moment'
+  import axios from 'axios'
   export default {
     data() {
       return {
+        size: 'sm',
+        mostRecentRecordingName: 'placeholder.wav'
       }
+    },
+    methods: {
+      clipOffset(ms) {
+        // let recordingLength = document.querySelector('audio').duration
+        return moment
+      }
+    },
+    mounted() {
+      let that = this
+      axios.get('/api/mostRecentRecordingName').then(res => {
+        if (res.status === 200) {
+          that.mostRecentRecordingName = res.data
+        }
+      })
     }
   }
 </script>

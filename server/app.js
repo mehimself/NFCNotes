@@ -13,7 +13,6 @@ const ws = new WebsocketManager()
 
 app.use(history())
 app.use(function (req, res, next) {
-  console.log(req.path)
   next()
 })
 app.use(function insertCSPHeader(req, res, next) {

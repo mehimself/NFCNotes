@@ -5,11 +5,12 @@
       <change afterPath="$PROJECT_DIR$/server/WebSocketService/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/webpack-assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/webpack-assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/ARecord/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/ARecord/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/api/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/api/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/routes/loops.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/api/loops.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/router/Record/Record.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/Record/Record.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/Review/Review.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/Review/Review.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/getters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/getters.js" afterDir="false" />
@@ -32,20 +33,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/api/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="286">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/app.js">
+      <file leaf-file-name="Record.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/router/Record/Record.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="23" lean-forward="true" selection-start-column="23" selection-end-column="23" />
+            <state relative-caret-position="264">
+              <caret line="30" column="11" lean-forward="true" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Review.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/router/Review/Review.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="364">
+              <caret line="38" column="19" lean-forward="true" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
+              <folding>
+                <element signature="e#1103#1130#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -61,7 +74,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>randomIndex</find>
       <find>getTextColor</find>
       <find>getRandomAcc</find>
       <find>getRandomAccent</find>
@@ -91,6 +103,7 @@
       <find>&quot;</find>
       <find>routes</find>
       <find>/usr/bin/git ls-remote</find>
+      <find>server/api</find>
     </findStrings>
     <replaceStrings>
       <replace>let</replace>
@@ -134,7 +147,6 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/directives/trianglify.js" />
         <option value="$PROJECT_DIR$/src/style/style.scss" />
-        <option value="$PROJECT_DIR$/src/router/Review/Review.vue" />
         <option value="$PROJECT_DIR$/src/router/Home/Home.vue" />
         <option value="$PROJECT_DIR$/src/router/Record/index.js" />
         <option value="$PROJECT_DIR$/src/router/Review/index.js" />
@@ -155,14 +167,15 @@
         <option value="$PROJECT_DIR$/src/store/mutations.js" />
         <option value="$PROJECT_DIR$/src/store/getters.js" />
         <option value="$PROJECT_DIR$/src/main.js" />
-        <option value="$PROJECT_DIR$/src/router/Record/Record.vue" />
         <option value="$PROJECT_DIR$/server/index.js" />
         <option value="$PROJECT_DIR$/server/WebSocketService/index.js" />
         <option value="$PROJECT_DIR$/server/routes/index.js" />
         <option value="$PROJECT_DIR$/src/store/actions.js" />
         <option value="$PROJECT_DIR$/server/ARecord/index.js" />
-        <option value="$PROJECT_DIR$/server/api/index.js" />
+        <option value="$PROJECT_DIR$/src/router/Review/Review.vue" />
         <option value="$PROJECT_DIR$/server/app.js" />
+        <option value="$PROJECT_DIR$/src/router/Record/Record.vue" />
+        <option value="$PROJECT_DIR$/server/api/index.js" />
       </list>
     </option>
   </component>
@@ -227,7 +240,21 @@
               <item name="NFCNotes" type="b2602c69:ProjectViewProjectNode" />
               <item name="NFCNotes" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="store" type="462c0819:PsiDirectoryNode" />
+              <item name="router" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NFCNotes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NFCNotes" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="router" type="462c0819:PsiDirectoryNode" />
+              <item name="Record" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NFCNotes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NFCNotes" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="router" type="462c0819:PsiDirectoryNode" />
+              <item name="Review" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -374,7 +401,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="211840000" />
+    <option name="totallyTimeSpent" value="221552000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -393,9 +420,9 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Serial Monitor" order="8" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.20814978" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.024229076" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32819384" />
+      <window_info anchor="bottom" x="775" y="671" width="899" height="298" id="Terminal" order="9" type="WINDOWED" visible="true" weight="0.32819384" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49139786" visible="true" weight="0.2102336" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32819384" />
@@ -674,20 +701,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/router/Record/Record.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="23" column="29" lean-forward="true" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/router/Review/Review.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="23" column="11" lean-forward="true" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/layouts/MainLayout/MainLayout.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -710,24 +723,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/ARecord/index.js">
+    <entry file="file://$PROJECT_DIR$/src/router/Review/Review.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="364">
+          <caret line="38" column="19" lean-forward="true" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
+          <folding>
+            <element signature="e#1103#1130#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/api/index.js">
+    <entry file="file://$PROJECT_DIR$/server/ARecord/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="208">
+          <caret line="16" column="66" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" lean-forward="true" selection-start-column="23" selection-end-column="23" />
+        <state relative-caret-position="195">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/router/Record/Record.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="30" column="11" lean-forward="true" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/api/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
