@@ -19,6 +19,7 @@ const mutations = {
   [types.PUT_TAG](state, update) {
     let tagIndex = state.tags.findIndex(tag => tag.id === update.id)
     state.tags[tagIndex] = update
+    console.log('mutation state tags', state.tags)
   }
 }
 

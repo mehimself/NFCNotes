@@ -29,7 +29,7 @@ const actions = {
     commit(types.SET_TAGREADPULSE, true)
   },
   [types.SET_TAGS]({state, commit}, value) {
-    localStorage.setItem('tags', value)
+    localStorage.setItem('tags', JSON.stringify(value))
     commit(types.SET_TAGS, value)
   },
   [types.POST_TAG]({commit}, tagId) {
@@ -38,15 +38,22 @@ const actions = {
       end: Date.now() + tagClipDuration,
       id: tagId
     }
-    let LSTags = localStorage.getItem('tags') || []
+    let LSTags = JSON.parse(localStorage.getItem('tags')) || []
     LSTags.push(newTag)
-    localStorage.setItem('tags', LSTags)
+    localStorage.setItem('tags', JSON.stringify(LSTags))
     commit(types.POST_TAG, newTag)
   },
   [types.DELETE_TAG]({state, commit}, tagId) {
-    const LSTags = localStorage.getItem('tags') || []
-    LSTags.splice(LSTags.findIndex(tag => tag.id === tagId))
+    const LSTags = JSON.parse(localStorage.getItem('tags')) || []
+    LSTags.splice(LSTags.findIndex(tag => tag.id === tagId), 1)
     commit(types.DELETE_TAG, tagId)
+  },
+  [types.PUT_TAG]({commit}, update) {
+    const LSTags = JSON.parse(localStorage.getItem('tags')) || []
+    LSTags.splice(LSTags.findIndex(tag => tag.id === update.id), 1, update)
+    localStorage.setItem('tags', JSON.stringify(LSTags))
+    console.log('action LS tag', LSTags)
+    commit(types.PUT_TAG, update)
   }
 
   // localStorage.setItem('access_token', response.data.token)
