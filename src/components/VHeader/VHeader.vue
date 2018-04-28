@@ -35,6 +35,26 @@
         </v-btn>
       </v-toolbar-items>
       <v-spacer></v-spacer>
+      <v-toolbar-items v-if="debug.showTagHeader">
+        <v-btn
+          icon
+          large
+          @click="simulateTagRead()"
+        >
+          <v-icon>
+            track_changes
+          </v-icon>
+        </v-btn>
+        <v-btn
+          icon
+          large
+          @click="simulateTagRemoved()"
+        >
+          <v-icon>
+            portable_wifi_off
+          </v-icon>
+        </v-btn>
+      </v-toolbar-items>
       <v-tooltip left>
         <v-btn
           slot="activator"
@@ -57,6 +77,7 @@
   import { mapState } from 'vuex'
   import VDatakubenLogo from '../VDatakubenLogo'
   import VLogo from '../VLogo'
+  import axios from 'axios'
 
   export default {
     name: 'VHeader',
@@ -66,13 +87,15 @@
       dialog: false,
       items: [
         {link: 'record', xs: 'mic', sm: 'Record', md: 'Record Session'},
-        {link: 'review', xs: 'rate_review', sm: 'Review', md: 'Review Notes'}
+        {link: 'review', xs: 'rate_review', sm: 'Review', md: 'review notes'}
       ]
     }),
     computed: {
       ...mapState([
         'appColors',
-        'pageColor'
+        'pageColor',
+        'debug',
+        'tags'
       ]),
       recording: function () {
         return this.$store.state.recording
@@ -81,6 +104,12 @@
     methods: {
       gotoDATAKUBEN: function () {
         window.location.href = 'http://datakuben.sdu.dk'
+      },
+      simulateTagRead: function () {
+        axios.get('/api/debug/tagRead/' + Date.now())
+      },
+      simulateTagRemoved: function () {
+        axios.get('/api/debug/tagRemoved/' + Date.now())
       }
     },
     components: {

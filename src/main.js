@@ -16,8 +16,7 @@ Vue.use(
   'ws://localhost:3001',
   {
     store: store,
-    reconnection: true,
-    format: 'json'
+    reconnection: true
   }
 )
 

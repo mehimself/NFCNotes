@@ -3,7 +3,7 @@
     <v-layout class="clear" row align-center justify-content-center>
       <v-flex xs12>
         <v-card class="glass">
-          <v-card-title primary-title @click="animate=!animate"><!-- todo: remove @click -->
+          <v-card-title primary-title>
             <h1>
               Record Notes
             </h1>
@@ -30,23 +30,23 @@
   </v-container>
 </template>
 <script>
+  import {mapState} from 'vuex'
   export default {
-    data() {
-      return {
-        animate: false
-      }
-    },
     computed: {
-      recording: function () {
-        return this.$store.state.recording
-      },
+      ...mapState([
+        'recording'
+      ]),
       buttonColor: function () {
         return this.recording ? 'red' : ''
       }
     },
     methods: {
       toggleRecording: function () {
-        this.$store.dispatch('SET_RECORDING', !this.recording)
+        if (this.recording) {
+          this.$store.dispatch('STOP_RECORDING')
+        } else {
+          this.$store.dispatch('START_RECORDING')
+        }
       }
     }
   }

@@ -4,7 +4,7 @@
     <i
       aria-hidden="true"
       class="icon material-icons"
-      :class="{'tumble': tumble, 'flat': flat}"
+      :class="{'inactive': !active, 'active': active}"
       :style="{fontSize: size + 'em'}">nfc</i>
   </div>
 </template>
@@ -27,68 +27,37 @@
         'default': '2',
         type: String
       },
-      'flat': {
+      'active': {
         default: null,
         type: Boolean
-      },
-      'tumble': {
-        default: null,
-        type: String
       }
     }
   }
 </script>
-<style>
-  @keyframes tumble {
-    0%, 100% {
-      transform: rotate3D(1, -1, 0, 0deg);
-    }
-    12% {
-      transform: rotate3D(0, 1, 0, 1080deg);
-    }
-    25% {
+<style scoped>
+
+  @keyframes active {
+    0% {
       transform: rotate3D(0, 1, 1, 0deg);
     }
-    37% {
-      transform: rotate3D(1, 0, -1, 360deg);
-    }
-    50% {
-      transform: rotate3D(-1, 1, 0, 0deg);
-    }
-    62% {
-      transform: rotate3D(0.5, 0, 1, 720deg);
-    }
-    75% {
-      transform: rotate3D(1, 1, 0, 0deg);
-    }
-    88% {
-      transform: rotate3D(0, 1, -1, 360deg);
-    }
-  }
-
-  .logo .tumble {
-    animation-name: tumble;
-    animation-duration: 72s;
-    animation-iteration-count: infinite;
-    animation-direction: normal;
-    animation-timing-function: ease; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
-    animation-fill-mode: none; /* or: backwards, both, none */
-  }
-
-  @keyframes rotate {
-    0% {
-      transform: rotate3D(0, 0, 1, 10deg);
+    100% {
+      transform: rotate3D(0, 1, 1, 360deg);
       filter: invert(100%);
     }
-    100% {
-      transform: rotate3D(0, 0, 1, 1080deg);
-    }
   }
 
-  .logo .flat {
+  .logo .active {
     animation-name: rotate;
     animation-duration: 2s;
     animation-direction: normal;
+    animation-timing-function: ease-out; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
+    animation-fill-mode: none; /* or: backwards, both, none */
+  }
+
+  .logo .inactive {
+    animation-name: rotate;
+    animation-duration: 2s;
+    animation-direction: reverse;
     animation-timing-function: ease-out; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
     animation-fill-mode: none; /* or: backwards, both, none */
   }

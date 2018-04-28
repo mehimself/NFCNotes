@@ -1,62 +1,51 @@
 import * as types from './mutation-types'
 import axios from 'axios'
+
 const tagClipDuration = 10000
-const pulseDuration = 2000
-let pulseTimeout = null
 
 const actions = {
-  [types.SET_RECORDING]({commit, dispatch}, value) {
-    const starting = value
-    let promise
-    if (starting) {
-      promise = axios.put('/api/startRecording')
-    } else {
-      promise = axios.put('/api/stopRecording')
-    }
-    promise.then(function () {
+  [types.START_RECORDING]({commit, dispatch}) {
+    const tags = []
+    commit(types.SET_TAGS, tags)
+    axios.put('/api/startRecording').then(function () {
       dispatch(types.SET_TAGS, [])
-      commit(types.SET_RECORDING, value)
+      commit(types.START_RECORDING, Date.now())
     })
   },
-  [types.SET_TAGREADPULSE]({commit}) {
-    // create pulse
-    if (pulseTimeout) {
-      clearTimeout(pulseTimeout)
-    }
-    pulseTimeout = setTimeout(function () {
-      commit(types.SET_TAGREADPULSE, false)
-    }, pulseDuration)
-    commit(types.SET_TAGREADPULSE, true)
+  [types.STOP_RECORDING]({commit, dispatch}) {
+    axios.put('/api/stopRecording').then(function () {
+      commit(types.STOP_RECORDING)
+    })
   },
   [types.SET_TAGS]({state, commit}, value) {
-    localStorage.setItem('tags', JSON.stringify(value))
     commit(types.SET_TAGS, value)
   },
-  [types.POST_TAG]({commit}, tagId) {
-    const newTag = {
-      start: Date.now(),
-      end: Date.now() + tagClipDuration,
-      id: tagId
-    }
-    let LSTags = JSON.parse(localStorage.getItem('tags')) || []
-    LSTags.push(newTag)
-    localStorage.setItem('tags', JSON.stringify(LSTags))
-    commit(types.POST_TAG, newTag)
+  [types.POST_TAG]({commit}, tag) {
+    commit(types.POST_TAG, tag)
   },
   [types.DELETE_TAG]({state, commit}, tagId) {
     const LSTags = JSON.parse(localStorage.getItem('tags')) || []
     LSTags.splice(LSTags.findIndex(tag => tag.id === tagId), 1)
     commit(types.DELETE_TAG, tagId)
   },
-  [types.PUT_TAG]({commit}, update) {
-    const LSTags = JSON.parse(localStorage.getItem('tags')) || []
-    LSTags.splice(LSTags.findIndex(tag => tag.id === update.id), 1, update)
-    localStorage.setItem('tags', JSON.stringify(LSTags))
-    console.log('action LS tag', LSTags)
-    commit(types.PUT_TAG, update)
+  [types.HANDLE_WS_TAGREAD]({state, commit, dispatch}, tagId) {
+    let tag = state.tags.find(tag => tag.id === tagId)
+    const isNewTag = !tag
+    if (state.recording && isNewTag) {
+      const startOffset = state.recording - Date.now()
+      tag = {
+        id: tagId,
+        start: startOffset,
+        end: startOffset + tagClipDuration,
+        note: 'my first notes'
+      }
+      commit(types.POST_TAG, tag)
+    }
+    commit(types.SET_ACTIVETAG, tag)
+  },
+  [types.HANDLE_WS_TAGREMOVED]({state, commit}) {
+    commit(types.SET_ACTIVETAG, null)
   }
-
-  // localStorage.setItem('access_token', response.data.token)
 }
 
 export default actions

@@ -5,7 +5,7 @@
         <v-card class="glass dark">
           <v-card-text v-if="!recording">
             <audio controls style="width: 100%">
-              <source :src="'/recordings/' + mostRecentRecordingName" type="audio/wav"><!-- todo: switch to recording.wav -->
+              <source :src="'/recordings/' + mostRecentRecordingName" type="audio/wav">
               Your browser does not support the audio element.
             </audio>
           </v-card-text>
@@ -18,10 +18,13 @@
                 @click="openEditor(tag)"
               >
                 <v-card
-                    flat
-                    tile
-                    class="tag"
-                    :class="{'disabled': recording}"
+                  flat
+                  tile
+                  class="tag"
+                  :class="{
+                    'disabled': recording,
+                    'active': recording && activeTag === tag
+                  }"
                 >
                   <v-card-text>
                     <v-icon>alarm</v-icon>
@@ -36,13 +39,13 @@
       </v-flex>
     </v-layout>
     <v-dialog
-      v-if="editedTag"
-      v-model="editedTag">
+      v-if="edit"
+      v-model="activeTag">
       <v-card>
         <v-card-title
           class="blue-grey darken-4 py-4 title"
         >
-          Edit Note (Clip duration {{ durationString(editedTag.end - editedTag.start, true) }})
+         Edit Note (Clip duration {{ durationString(activeTagEnd - activeTagStart, true) }})
         </v-card-title>
         <v-container grid-list-sm class="pa-4">
           <v-layout row wrap>
@@ -51,6 +54,8 @@
                 prepend-icon="edit"
                 placeholder="Notes"
                 multi-line
+                :value="activeTagNote"
+                @input="updateTagNote"
               ></v-text-field>
             </v-flex>
             <v-flex xs12>
@@ -58,13 +63,14 @@
                 <v-flex xs9>
                   <v-slider
                     label="start time"
-                    :max="editedTag.end - 2000"
-                    v-model="editedTag.start">
+                    :max="activeTagEnd - 2000"
+                    v-model="activeTagStart">
                   </v-slider>
                 </v-flex>
                 <v-flex xs2>
                   <v-text-field
-                    :value="editedTagStartOffset"
+                    :value="durationString(activeTagStart, true)"
+                    @input="updateTagStart"
                     type="string"></v-text-field>
                 </v-flex>
               </v-layout>
@@ -74,14 +80,15 @@
                 <v-flex xs9>
                   <v-slider
                     label="end time"
-                    :min="editedTag.start + 2000"
+                    :min="activeTagStart + 2000"
                     :max="recordingDuration"
-                    v-model="editedTag.end">
+                    v-model="activeTagEnd">
                   </v-slider>
                 </v-flex>
                 <v-flex xs2>
                   <v-text-field
-                    :value="editedTagEndOffset"
+                    :value="durationString(activeTagEnd, true)"
+                    @input="updateTagEnd"
                     type="string"></v-text-field>
                 </v-flex>
               </v-layout>
@@ -89,9 +96,8 @@
           </v-layout>
         </v-container>
         <v-card-actions>
-          <v-btn flat @click="closeEditor()">Close</v-btn>
           <v-spacer></v-spacer>
-          <v-btn flat @click="closeEditor(true)">Save</v-btn>
+          <v-btn flat @click="closeEditor()">Close</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -102,21 +108,11 @@
   import {mapState, mapGetters} from 'vuex'
   import moment from 'moment'
   import axios from 'axios'
-  function copyObjectLiteral(obj) {
-    let copy = {}
-    for (let name in obj) {
-      if (obj.hasOwnProperty(name)) {
-        copy[name] = obj[name]
-      }
-    }
-    return copy
-  }
   export default {
     data() {
       return {
         size: 'sm',
-        editedTag: null,
-        editedTagBackup: null,
+        edit: false,
         recordingStartMS: Date.now(),
         recordingDuration: 10000,
         mostRecentRecordingName: 'placeholder.wav'
@@ -124,13 +120,40 @@
     },
     computed: {
       ...mapState([
-        'recording'
+        'recording',
+        'activeTag'
       ]),
-      editedTagStartOffset: function () {
-        return this.durationString(this.editedTag.start, true)
+      activeTag: {
+        get() {
+          return this.$store.state.activeTag
+        },
+        set(value) {
+          this.$store.commit(types.PUT_ACTIVETAG, value)
+        }
       },
-      editedTagEndOffset: function () {
-        return this.durationString(this.editedTag.end, true)
+      activeTagNote: {
+        get() {
+          return this.$store.state.activeTag.note
+        },
+        set(value) {
+          this.$store.commit(types.PUT_ACTIVETAG, {note: value})
+        }
+      },
+      activeTagEnd: {
+        get() {
+          return this.$store.state.activeTag.end
+        },
+        set(value) {
+          this.$store.commit(types.PUT_ACTIVETAG, {end: value})
+        }
+      },
+      activeTagStart: {
+        get() {
+          return this.$store.state.activeTag.start
+        },
+        set(value) {
+          this.$store.commit(types.PUT_ACTIVETAG, {start: value})
+        }
       }
     },
     methods: {
@@ -144,19 +167,20 @@
         return this.durationString(tag.end - tag.start, true)
       },
       openEditor: function (tag) {
-        this.editedTagBackup = copyObjectLiteral(tag)
-        this.editedTag = tag
+        this.$store.commit(types.SET_ACTIVETAG, tag)
+        this.edit = true
       },
-      closeEditor: function (save) {
-        this.$store.dispatch(types.PUT_TAG, save ? this.editedTag : this.editedTagBackup)
-        if (!save) {
-          for (let name in this.editedTagBackup) {
-            if (this.editedTagBackup.hasOwnProperty(name)) {
-              this.editedTag[name] = this.editedTagBackup[name]
-            }
-          }
-        }
-        this.editedTag = null
+      updateTagNote: function (note) {
+        this.activeTagNote = note
+      },
+      updateTagStart: function (value) {
+        this.activeTagStart = value
+      },
+      updateTagEnd: function (value) {
+        this.activeTagEnd = value
+      },
+      closeEditor: function () {
+        this.edit = false
       },
       durationString: function (ms, twoUnitsOnly) {
         const duration = moment.duration(ms)
@@ -184,9 +208,23 @@
           that.recordingStartMS = moment(that.mostRecentRecordingName, 'YYYY/MM/DD HH-mm-ss').valueOf()
         }
       })
-      document.querySelector('audio').onloadeddata = function () {
-        console.log('duration', document.querySelector('audio').duration)
-        that.recordingDuration = Math.round(document.querySelector('audio').duration) * 1000
+      if (!this.recording) {
+        document.querySelector('audio').onloadeddata = function () {
+          that.recordingDuration = Math.round(document.querySelector('audio').duration) * 1000
+        }
+      }
+      this.$options.sockets.onmessage = function (msg) {
+        const body = JSON.parse(msg.data)
+        console.log(body)
+        if (body.destination === 'review') {
+          switch (body.subject) {
+            case 'tagRead':
+              this.$store.dispatch(types.HANDLE_WS_TAGREAD, body.payload)
+              break
+            case 'tagRemoved':
+              this.$store.dispatch(types.HANDLE_WS_TAGREMOVED, body.payload)
+          }
+        }
       }
     }
   }
@@ -205,5 +243,8 @@
   }
   .tag.disabled {
     opacity: 0.7;
+  }
+  .active {
+    filter: invert(100%);
   }
 </style>

@@ -1,4 +1,3 @@
-const WebsocketManager = require('./WebSocketService')
 const express = require('express')
 const debug = require('debug')('app:server')
 const history = require('connect-history-api-fallback')
@@ -9,7 +8,6 @@ const {__DEV__, __PROD__, __TEST__} = config.globals
 
 const app = express()
 const api = require('./api')
-const ws = new WebsocketManager()
 
 app.use(history())
 app.use(function (req, res, next) {
