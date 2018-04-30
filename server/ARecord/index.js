@@ -7,6 +7,7 @@ module.exports = {
     let ARecord = process.spawn(
       'arecord',
       [
+        '--device=plughw:0,0',
         '-t',
         'wav',
         '-f',
