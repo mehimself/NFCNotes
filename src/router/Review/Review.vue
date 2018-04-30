@@ -46,7 +46,7 @@
         </v-card-title>
         <v-container grid-list-sm class="pa-4">
           <v-layout row wrap>
-            <v-flex xs9>
+            <v-flex xs12>
               <v-text-field
                 prepend-icon="edit"
                 placeholder="Notater"
@@ -55,11 +55,6 @@
                 :value="activeTagNote"
                 @input="updateTagNote"
               ></v-text-field>
-            </v-flex>
-            <v-flex xs3>
-              <v-avatar size="48" @click="playClip()">
-                <v-icon>play_arrow</v-icon>
-              </v-avatar>
             </v-flex>
             <v-flex xs12>
               <v-layout row>
