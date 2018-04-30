@@ -11,10 +11,8 @@ module.exports = {
         'wav',
         '-f',
         'dat',
-        '--max-file-time',
-        '7200',
         '--use-strftime',
-        path.join(__dirname, 'public/recordings/%Y/%m/%d %H-%M-%S %v.wav')
+        path.join(__dirname, 'public/recordings/%Y/%m/%d %H-%M-%S.wav')
       ]
     )
     ARecord.stderr.on('data', function (data) {

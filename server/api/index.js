@@ -47,13 +47,13 @@ router.get('/mostRecentRecordingName', function (req, res) {
 router.put('/startRecording', function (req, res) {
   console.log('starting recording with arecord')
   // todo: uncomment next line
-  // ARecord.startRecording()
+  ARecord.startRecording()
   res.end()
 })
 router.put('/stopRecording', function (req, res) {
   console.log('stopping recording with arecord')
   // todo: uncomment next line
-  // ARecord.stopRecording()
+  ARecord.stopRecording()
   res.end()
 })
 
