@@ -18,7 +18,7 @@ const state = {
   },
   parchmentColorArray: ['#A1887F', '#FFD9A0', '#A1887F', '#A1887F', '#FFD9A0', '#A1887F'],
   avatarColorArray: ['#FFFFFF', '#777777'],
-  recording: true,
+  recording: false,
   activeTag: false,
   tags: JSON.parse(localStorage.getItem('tags')),
   debug: {

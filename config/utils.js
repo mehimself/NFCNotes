@@ -27,7 +27,7 @@ function cssLoaders({sourceMap = false, extract = true}) {
     {
       loader: 'resolve-url-loader'
     },
-    /*{
+    /* {
       loader: 'postcss-loader',
       options: {
         sourceMap,
@@ -39,7 +39,7 @@ function cssLoaders({sourceMap = false, extract = true}) {
           })
         ]
       }
-    }*/
+    } */
   ]
 
   // generate loader string to be used with extract text plugin
@@ -69,8 +69,8 @@ function cssLoaders({sourceMap = false, extract = true}) {
     css: generateLoaders(),
     postcss: generateLoaders(),
     // less: generateLoaders('less'),
-    sass: generateLoaders('sass'),
-    scss: generateLoaders('sass')
+    // sass: generateLoaders('sass'),
+    // scss: generateLoaders('sass')
     // stylus: generateLoaders('stylus'),
     // styl: generateLoaders('stylus')
   }
