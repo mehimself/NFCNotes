@@ -17,6 +17,11 @@
   import VLogo from '../../components/VLogo'
 
   export default {
+    data() {
+      return {
+        recordingStartMS: Date.now()
+      }
+    },
     computed: {
       ...mapState([
         'activeTagPulse'

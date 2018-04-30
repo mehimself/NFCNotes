@@ -1,19 +1,19 @@
 const path = require('path')
 const process = require('child_process')
-
+const sudo = require('sudo')
 let ARecord
 module.exports = {
   startRecording: function () {
-    let ARecord = process.spawn(
-      'arecord',
+   ARecord = sudo(
       [
-        '--device=plughw:0,0',
+		'arecord',
+        '--device=plughw:1,0',
         '-t',
         'wav',
         '-f',
-        'dat',
+        'cd',
         '--use-strftime',
-        path.join(__dirname, 'public/recordings/%Y/%m/%d %H-%M-%S.wav')
+		'./public/recordings/%Y-%m-%d %H-%M-%S.wav'
       ]
     )
     ARecord.stderr.on('data', function (data) {
@@ -29,10 +29,12 @@ module.exports = {
     ARecord.stdin.pause() // todo: test: allow node to progress
   },
   stopRecording: function () {
-    try {
-      ARecord.kill()
-    } catch (e) {
-      console.log(e)
-    }
+	if (ARecord) {
+		const killProcess = sudo([
+		  'pkill',
+		  '-f',
+		  'arecord'
+		])
+	}
   }
 }

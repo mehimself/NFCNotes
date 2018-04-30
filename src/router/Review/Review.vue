@@ -3,11 +3,8 @@
     <v-layout fluid fill-height grid-list-lg>
       <v-flex xs10 offset-xs1>
         <v-card class="glass dark">
-          <v-card-text v-if="!recording">
-            <audio controls style="width: 100%">
-              <source :src="'/recordings/' + mostRecentRecordingName" type="audio/wav">
-              Your browser does not support the audio element.
-            </audio>
+          <v-card-text v-if="!recording" id=audioFrame>
+            
           </v-card-text>
           <v-container fluid v-bind="{ [`grid-list-${size}`]: true }">
             <v-layout row wrap>
@@ -114,7 +111,6 @@
       return {
         size: 'sm',
         edit: false,
-        recordingStartMS: Date.now(),
         recordingDuration: 10000,
         mostRecentRecordingName: 'placeholder.wav'
       }
@@ -206,14 +202,21 @@
       axios.get('/api/mostRecentRecordingName').then(res => {
         if (res.status === 200) {
           that.mostRecentRecordingName = res.data
-          that.recordingStartMS = moment(that.mostRecentRecordingName, 'YYYY/MM/DD HH-mm-ss').valueOf()
+          that.recordingStartMS = moment(that.mostRecentRecordingName, 'YYYY-MM-DD HH-mm-ss').valueOf()
+          let audio = document.createElement('audio')
+          let frame = document.querySelector('#audioFrame')
+          frame.innerHTML = ''
+          frame.appendChild(audio)
+          audio.setAttribute('type', 'audio/wav')
+          audio.setAttribute('controls', true)
+          audio.onloadeddata = function () {
+            that.recordingDuration = Math.round(document.querySelector('audio').duration) * 1000
+          }
+          let source = document.createElement('source')
+          audio.appendChild(source)
+          source.setAttribute('src', '/recordings/' + that.mostRecentRecordingName)
         }
       })
-      if (!this.recording) {
-        document.querySelector('audio').onloadeddata = function () {
-          that.recordingDuration = Math.round(document.querySelector('audio').duration) * 1000
-        }
-      }
     }
   }
 </script>
@@ -234,5 +237,8 @@
   }
   .active {
     filter: invert(100%);
+  }
+  audio {
+	width: 100%;
   }
 </style>

@@ -32,7 +32,7 @@ const actions = {
     let tag = state.tags.find(tag => tag.id === tagId)
     const isNewTag = !tag
     if (state.recording && isNewTag) {
-      const startOffset = state.recording - Date.now()
+      const startOffset = Date.now() - state.recording 
       tag = {
         id: tagId,
         start: startOffset,

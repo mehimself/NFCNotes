@@ -35,7 +35,7 @@ router.get('/mostRecentRecordingName', function (req, res) {
   for (let i = 0; i < files.length; i++) {
     let file = files[i]
     if (file !== 'placeholder.wav') {
-      let timestamp = moment(file, 'YYYY/MM/DD HH-mm-ss').valueOf()
+      let timestamp = moment(file, 'YYYY-MM-DD HH-mm-ss').valueOf()
       if (mostrecentTimestamp < timestamp) {
         mostrecentTimestamp = timestamp
         mostRecentRecording = file
