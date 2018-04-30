@@ -60,7 +60,6 @@
           slot="activator"
           icon
           large
-          @click="gotoDATAKUBEN"
         >
           <v-datakuben-logo/>
         </v-btn>
