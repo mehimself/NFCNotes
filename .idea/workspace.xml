@@ -30,15 +30,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="24" column="14" lean-forward="true" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+            <state relative-caret-position="481">
+              <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
                 <element signature="e#90#127#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1001">
+              <caret line="77" column="120" selection-start-line="77" selection-start-column="120" selection-end-line="77" selection-end-column="120" />
             </state>
           </provider>
         </entry>
@@ -159,8 +168,8 @@
         <option value="$PROJECT_DIR$/src/router/Review/Review.vue" />
         <option value="$PROJECT_DIR$/src/store/mutation-types.js" />
         <option value="$PROJECT_DIR$/src/store/state.js" />
-        <option value="$PROJECT_DIR$/src/index.html" />
         <option value="$PROJECT_DIR$/src/main.js" />
+        <option value="$PROJECT_DIR$/src/index.html" />
       </list>
     </option>
   </component>
@@ -204,13 +213,13 @@
             <path>
               <item name="NFCNotes" type="b2602c69:ProjectViewProjectNode" />
               <item name="NFCNotes" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NFCNotes" type="b2602c69:ProjectViewProjectNode" />
               <item name="NFCNotes" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="NFCReader" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="fonts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NFCNotes" type="b2602c69:ProjectViewProjectNode" />
@@ -390,12 +399,12 @@
       <workItem from="1524403088394" duration="13742000" />
       <workItem from="1524556248851" duration="13523000" />
       <workItem from="1524730416694" duration="41181000" />
-      <workItem from="1525016068992" duration="2057000" />
+      <workItem from="1525016068992" duration="2544000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="282012000" />
+    <option name="totallyTimeSpent" value="282499000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -412,12 +421,12 @@
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32903227" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.07488987" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.07488987" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Serial Monitor" order="8" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32903227" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49139786" visible="true" weight="0.1532787" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49139786" visible="true" weight="0.29918033" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32864866" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -666,13 +675,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/style/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="364">
@@ -689,12 +691,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="24" column="14" lean-forward="true" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+        <state relative-caret-position="481">
+          <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
             <element signature="e#90#127#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1001">
+          <caret line="77" column="120" selection-start-line="77" selection-start-column="120" selection-end-line="77" selection-end-column="120" />
         </state>
       </provider>
     </entry>
