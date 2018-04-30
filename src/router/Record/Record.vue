@@ -42,7 +42,7 @@
     },
     methods: {
       toggleRecording: function () {
-        if (this.recording) {
+        if (this.recording !== false) {
           this.$store.dispatch('STOP_RECORDING')
         } else {
           this.$store.dispatch('START_RECORDING')
