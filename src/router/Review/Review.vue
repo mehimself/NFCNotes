@@ -4,7 +4,7 @@
       <v-flex xs10 offset-xs1>
         <v-card class="glass dark">
           <v-card-text v-if="!recording" id=audioFrame>
-            
+
           </v-card-text>
           <v-container fluid v-bind="{ [`grid-list-${size}`]: true }">
             <v-layout row wrap>
@@ -46,7 +46,7 @@
         </v-card-title>
         <v-container grid-list-sm class="pa-4">
           <v-layout row wrap>
-            <v-flex xs12>
+            <v-flex xs9>
               <v-text-field
                 prepend-icon="edit"
                 placeholder="Notater"
@@ -55,6 +55,11 @@
                 :value="activeTagNote"
                 @input="updateTagNote"
               ></v-text-field>
+            </v-flex>
+            <v-flex xs3>
+              <v-avatar size="48" @click="playClip()">
+                <v-icon>play_arrow</v-icon>
+              </v-avatar>
             </v-flex>
             <v-flex xs12>
               <v-layout row>
@@ -106,6 +111,28 @@
   import {mapState, mapGetters} from 'vuex'
   import moment from 'moment'
   import axios from 'axios'
+
+  function playLoop() {
+    const canPlayLoop = !this.$store.state.recording && this.$store.state.activeTag
+    if (canPlayLoop) {
+      const audio = document.querySelector('audio')
+      const startSeconds = this.$store.state.activeTag.start / 1000
+      const endSeconds = this.$store.state.activeTag.end / 1000
+      if (audio.currentTime > endSeconds) {
+        audio.currentTime = startSeconds
+      }
+    }
+  }
+  function playClipInALoop() {
+    const canPlayLoop = !this.$store.state.recording && this.$store.state.activeTag
+    if (canPlayLoop) {
+      const audio = document.querySelector('audio')
+      const startSeconds = this.$store.state.activeTag.start / 1000
+      audio.currentTime = startSeconds
+      audio.ontimeupdate = playLoop
+    }
+
+  }
   export default {
     data() {
       return {
@@ -126,6 +153,7 @@
         },
         set(value) {
           this.$store.commit(types.PUT_ACTIVETAG, value)
+          playClipInALoop()
         }
       },
       activeTagNote: {

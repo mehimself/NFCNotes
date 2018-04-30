@@ -23,7 +23,7 @@ const state = {
   activeTagPulse: false,
   tags: JSON.parse(localStorage.getItem('tags')),
   debug: {
-    showTagHeader: true
+    showTagHeader: false
   }
 }
 export default state
