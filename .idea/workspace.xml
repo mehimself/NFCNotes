@@ -3,14 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b05e2da1-0f62-456b-84ac-13e0de1fb8e9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/webpack.config.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/webpack.config.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/webpack-assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/webpack-assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/mutation-types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/mutation-types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/state.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/style/_variables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/style/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/style.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,17 +24,21 @@
       <file leaf-file-name="VHeader.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/VHeader/VHeader.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="497">
-              <caret line="110" column="39" lean-forward="true" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
+            <state relative-caret-position="981">
+              <caret line="110" column="39" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/style/style.css">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
+            <state relative-caret-position="312">
+              <caret line="24" column="14" lean-forward="true" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+                <element signature="e#90#127#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -56,10 +54,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>routes</find>
-      <find>/usr/bin/git ls-remote</find>
-      <find>server/api</find>
-      <find>,</find>
       <find>editedTag.start</find>
       <find>localstorage</find>
       <find>ws</find>
@@ -86,6 +80,10 @@
       <find>open</find>
       <find>note</find>
       <find>scss</find>
+      <find>sass</find>
+      <find>style</find>
+      <find>style.css</find>
+      <find>css</find>
     </findStrings>
     <replaceStrings>
       <replace>let</replace>
@@ -112,7 +110,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/router/REXX/REXX.vue" />
         <option value="$PROJECT_DIR$/src/components/VTextInput/VTextInput.vue" />
         <option value="$PROJECT_DIR$/src/components/VMatchViewer/index.js" />
         <option value="$PROJECT_DIR$/src/components/VCanvasses/VCanvas/VCanvas.vue" />
@@ -152,7 +149,6 @@
         <option value="$PROJECT_DIR$/src/components/VLogo/VLogo.vue" />
         <option value="$PROJECT_DIR$/src/components/VLogo/VLogo.vue" />
         <option value="$PROJECT_DIR$/server/api/index.js" />
-        <option value="$PROJECT_DIR$/src/main.js" />
         <option value="$PROJECT_DIR$/src/layouts/MainLayout/MainLayout.vue" />
         <option value="$PROJECT_DIR$/src/store/getters.js" />
         <option value="$PROJECT_DIR$/src/components/VHeader/VHeader.vue" />
@@ -163,6 +159,8 @@
         <option value="$PROJECT_DIR$/src/router/Review/Review.vue" />
         <option value="$PROJECT_DIR$/src/store/mutation-types.js" />
         <option value="$PROJECT_DIR$/src/store/state.js" />
+        <option value="$PROJECT_DIR$/src/index.html" />
+        <option value="$PROJECT_DIR$/src/main.js" />
       </list>
     </option>
   </component>
@@ -183,9 +181,9 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="763" />
+    <option name="x" value="434" />
     <option name="y" value="23" />
-    <option name="width" value="912" />
+    <option name="width" value="1241" />
     <option name="height" value="1005" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -202,6 +200,17 @@
             <path>
               <item name="NFCNotes" type="b2602c69:ProjectViewProjectNode" />
               <item name="NFCNotes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NFCNotes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NFCNotes" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NFCNotes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NFCNotes" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="NFCReader" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NFCNotes" type="b2602c69:ProjectViewProjectNode" />
@@ -381,12 +390,12 @@
       <workItem from="1524403088394" duration="13742000" />
       <workItem from="1524556248851" duration="13523000" />
       <workItem from="1524730416694" duration="41181000" />
-      <workItem from="1525016068992" duration="1588000" />
+      <workItem from="1525016068992" duration="2057000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="281543000" />
+    <option name="totallyTimeSpent" value="282012000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -398,16 +407,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="763" y="23" width="912" height="1005" extended-state="0" />
+    <frame x="434" y="23" width="1241" height="1005" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32903227" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.07488987" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.07488987" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Serial Monitor" order="8" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32903227" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49139786" visible="true" weight="0.20987654" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49139786" visible="true" weight="0.1532787" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32864866" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -433,16 +443,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/store/actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="30" column="2" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/store/mutations.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="364">
@@ -592,16 +592,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/store/getters.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
@@ -676,17 +666,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/VHeader/VHeader.vue">
+    <entry file="file://$PROJECT_DIR$/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="110" column="39" lean-forward="true" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
+        <state relative-caret-position="91">
+          <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/style/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
+        <state relative-caret-position="364">
+          <caret line="28" column="36" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/VHeader/VHeader.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="981">
+          <caret line="110" column="39" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="24" column="14" lean-forward="true" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#90#127#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

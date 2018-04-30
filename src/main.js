@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import 'core-js/modules/es6.promise'
 
-import './style/style.css'
+// import './style/style.css'
 import 'vuetify/dist/vuetify.min.css'
 import Vuetify from 'vuetify'
 
