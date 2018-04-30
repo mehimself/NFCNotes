@@ -25,10 +25,10 @@
       <file leaf-file-name="Review.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/router/Review/Review.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="48" column="24" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
+            <state relative-caret-position="557">
+              <caret line="203" column="52" selection-start-line="203" selection-start-column="52" selection-end-line="203" selection-end-column="52" />
               <folding>
-                <element signature="n#v-layout#0;n#v-container#0;n#template#0;n#!!top" />
+                <element signature="n#v-dialog#0;n#v-container#0;n#template#0;n#!!top" />
                 <element signature="e#3323#3374#0" expanded="true" />
               </folding>
             </state>
@@ -415,12 +415,12 @@
       <workItem from="1524556248851" duration="13523000" />
       <workItem from="1524730416694" duration="41181000" />
       <workItem from="1525016068992" duration="6149000" />
-      <workItem from="1525092563089" duration="5943000" />
+      <workItem from="1525092563089" duration="6144000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="292047000" />
+    <option name="totallyTimeSpent" value="292248000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -464,7 +464,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="30" />
+      <option name="time" value="31" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -723,10 +723,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/router/Review/Review.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="48" column="24" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
+        <state relative-caret-position="557">
+          <caret line="203" column="52" selection-start-line="203" selection-start-column="52" selection-end-line="203" selection-end-column="52" />
           <folding>
-            <element signature="n#v-layout#0;n#v-container#0;n#template#0;n#!!top" />
+            <element signature="n#v-dialog#0;n#v-container#0;n#template#0;n#!!top" />
             <element signature="e#3323#3374#0" expanded="true" />
           </folding>
         </state>

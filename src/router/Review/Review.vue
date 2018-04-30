@@ -116,6 +116,7 @@
       if (audio.currentTime > endSeconds) {
         audio.currentTime = startSeconds
       }
+      audio.play()
     }
   }
   function playClipInALoop() {
@@ -200,6 +201,7 @@
         this.activeTagEnd = value
       },
       closeEditor: function () {
+        this.$store.commit(types.SET_ACTIVETAG, null)
         this.edit = false
       },
       durationString: function (ms, twoUnitsOnly) {
