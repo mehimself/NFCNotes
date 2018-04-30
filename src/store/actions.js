@@ -12,7 +12,7 @@ const actions = {
       commit(types.START_RECORDING, Date.now())
     })
   },
-  [types.STOP_RECORDING]({commit, dispatch}) {
+  [types.STOP_RECORDING]({commit}) {
     axios.put('/api/stopRecording').then(function () {
       commit(types.STOP_RECORDING)
     })

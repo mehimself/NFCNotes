@@ -29,6 +29,10 @@ module.exports = {
     ARecord.stdin.pause() // todo: test: allow node to progress
   },
   stopRecording: function () {
-    ARecord.kill()
+    try {
+      ARecord.kill()
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
