@@ -5,7 +5,7 @@
         <v-card class="glass">
           <v-card-title primary-title>
             <h1>
-              Record Notes
+              Optag Møde
             </h1>
           </v-card-title>
           <v-card-text>
@@ -16,12 +16,12 @@
             >
               <v-icon>mic</v-icon>
               <span v-if="!recording" class="pr-1">
-                Begin
+                Start
               </span>
               <span v-else class="pr-1">
-                Stop
+                Slut
               </span>
-              recording audio
+              optagelse
             </v-btn>
           </v-card-text>
         </v-card>

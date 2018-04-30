@@ -86,8 +86,8 @@
       drawer: false,
       dialog: false,
       items: [
-        {link: 'record', xs: 'mic', sm: 'Record', md: 'Record Session'},
-        {link: 'review', xs: 'rate_review', sm: 'Review', md: 'review notes'}
+        {link: 'record', xs: 'mic', sm: 'Optag', md: 'Optag Møde'},
+        {link: 'review', xs: 'rate_review', sm: 'Rediger', md: 'Rediger Notater'}
       ]
     }),
     computed: {

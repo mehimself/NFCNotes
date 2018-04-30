@@ -20,6 +20,7 @@ const state = {
   avatarColorArray: ['#FFFFFF', '#777777'],
   recording: false,
   activeTag: false,
+  activeTagPulse: false,
   tags: JSON.parse(localStorage.getItem('tags')),
   debug: {
     showTagHeader: true

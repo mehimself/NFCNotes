@@ -2,7 +2,7 @@
   <v-app id="inspire">
     <v-header></v-header>
     <div style="position: absolute; top: 80px; left: 248px;">
-      <v-logo size="32" :active="animate"></v-logo>
+      <v-logo size="25" :active="!!activeTagPulse"></v-logo>
     </div>
     <v-content>
       <router-view></router-view>
@@ -11,18 +11,35 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
+  import * as types from '../../store/mutation-types'
   import VHeader from '../../components/VHeader'
   import VLogo from '../../components/VLogo'
 
   export default {
     computed: {
-      animate: function () {
-        return !!this.$store.state.activeTag
-      }
+      ...mapState([
+        'activeTagPulse'
+      ])
     },
     components: {
       VHeader,
       VLogo
+    },
+    mounted() {
+      this.$options.sockets.onmessage = function (msg) {
+        const body = JSON.parse(msg.data)
+        console.log(body)
+        if (body.destination === 'review') {
+          switch (body.subject) {
+            case 'tagRead':
+              this.$store.dispatch(types.HANDLE_WS_TAGREAD, body.payload)
+              break
+            case 'tagRemoved':
+              this.$store.dispatch(types.HANDLE_WS_TAGREMOVED, body.payload)
+          }
+        }
+      }
     }
   }
 </script>

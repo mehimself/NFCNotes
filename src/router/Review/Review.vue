@@ -45,15 +45,16 @@
         <v-card-title
           class="blue-grey darken-4 py-4 title"
         >
-         Edit Note (Clip duration {{ durationString(activeTagEnd - activeTagStart, true) }})
+         Rediger Notater (Lydklip varighed {{ durationString(activeTagEnd - activeTagStart, true) }})
         </v-card-title>
         <v-container grid-list-sm class="pa-4">
           <v-layout row wrap>
             <v-flex xs12>
               <v-text-field
                 prepend-icon="edit"
-                placeholder="Notes"
+                placeholder="Notater"
                 multi-line
+                label="Skriv her:"
                 :value="activeTagNote"
                 @input="updateTagNote"
               ></v-text-field>
@@ -62,7 +63,7 @@
               <v-layout row>
                 <v-flex xs9>
                   <v-slider
-                    label="start time"
+                    label="Starttid"
                     :max="activeTagEnd - 2000"
                     v-model="activeTagStart">
                   </v-slider>
@@ -79,7 +80,7 @@
               <v-layout row>
                 <v-flex xs9>
                   <v-slider
-                    label="end time"
+                    label="Sluttid"
                     :min="activeTagStart + 2000"
                     :max="recordingDuration"
                     v-model="activeTagEnd">
@@ -97,7 +98,7 @@
         </v-container>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn flat @click="closeEditor()">Close</v-btn>
+          <v-btn flat @click="closeEditor()">Luk</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -211,19 +212,6 @@
       if (!this.recording) {
         document.querySelector('audio').onloadeddata = function () {
           that.recordingDuration = Math.round(document.querySelector('audio').duration) * 1000
-        }
-      }
-      this.$options.sockets.onmessage = function (msg) {
-        const body = JSON.parse(msg.data)
-        console.log(body)
-        if (body.destination === 'review') {
-          switch (body.subject) {
-            case 'tagRead':
-              this.$store.dispatch(types.HANDLE_WS_TAGREAD, body.payload)
-              break
-            case 'tagRemoved':
-              this.$store.dispatch(types.HANDLE_WS_TAGREMOVED, body.payload)
-          }
         }
       }
     }

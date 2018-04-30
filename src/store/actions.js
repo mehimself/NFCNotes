@@ -37,7 +37,7 @@ const actions = {
         id: tagId,
         start: startOffset,
         end: startOffset + tagClipDuration,
-        note: 'my first notes'
+        note: ''
       }
       commit(types.POST_TAG, tag)
     }

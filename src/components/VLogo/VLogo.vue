@@ -28,7 +28,7 @@
         type: String
       },
       'active': {
-        default: null,
+        default: false,
         type: Boolean
       }
     }
@@ -36,28 +36,22 @@
 </script>
 <style scoped>
 
-  @keyframes active {
+  @keyframes activeA {
     0% {
-      transform: rotate3D(0, 1, 1, 0deg);
+      transform: rotate3D(0, 1, 1, 10deg);
+    }
+    50% {
+      filter: invert(100%);
     }
     100% {
       transform: rotate3D(0, 1, 1, 360deg);
-      filter: invert(100%);
     }
   }
 
   .logo .active {
-    animation-name: rotate;
+    animation-name: activeA;
     animation-duration: 2s;
     animation-direction: normal;
-    animation-timing-function: ease-out; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
-    animation-fill-mode: none; /* or: backwards, both, none */
-  }
-
-  .logo .inactive {
-    animation-name: rotate;
-    animation-duration: 2s;
-    animation-direction: reverse;
     animation-timing-function: ease-out; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
     animation-fill-mode: none; /* or: backwards, both, none */
   }
