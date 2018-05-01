@@ -1,13 +1,7 @@
 # NFC Notes web application
-our web presence in the making
+Raspberry Pi app for interactive note taking during meetings. Start recording the meeting on the /record page. Then scan an NFC object any time in the meeting to create a bookmark for fast playback of what was just discussed. Adjust the audio clip length and supply notes on the /review page
 
 ## Quick start
-
-
-- *Make sure you have Node version >= 6.0 and NPM >= 3*
-- *upgrade babel to 7 https://github.com/babel/babel-upgrade*
-- *install vuetify https://vuetifyjs.com/en/getting-started/quick-start*
-- *install css-loader https://github.com/webpack-contrib/css-loader*
 
 ```bash
 # Clone project code 
