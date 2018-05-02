@@ -36,7 +36,7 @@
       </v-flex>
     </v-layout>
     <v-dialog
-      v-if="edit"
+      v-if="editableTagLoaded"
       v-model="activeTag">
       <v-card>
         <v-card-title
@@ -107,33 +107,21 @@
   import moment from 'moment'
   import axios from 'axios'
 
-  function playLoop() {
-    const canPlayLoop = !this.$store.state.recording && this.$store.state.activeTag
-    if (canPlayLoop) {
-      const audio = document.querySelector('audio')
-      const startSeconds = this.$store.state.activeTag.start / 1000
-      const endSeconds = this.$store.state.activeTag.end / 1000
-      if (audio.currentTime > endSeconds) {
-        audio.currentTime = startSeconds
-      }
-      audio.play()
-    }
-  }
-  function playClipInALoop() {
-    const canPlayLoop = !this.$store.state.recording && this.$store.state.activeTag
-    if (canPlayLoop) {
-      const audio = document.querySelector('audio')
-      const startSeconds = this.$store.state.activeTag.start / 1000
-      audio.currentTime = startSeconds
-      audio.ontimeupdate = playLoop
-    }
-
+  function renderPlayer(source) {
+    let audio = document.createElement('audio')
+    let frame = document.querySelector('#audioFrame')
+    frame.innerHTML = ''
+    frame.appendChild(audio)
+    audio.setAttribute('type', 'audio/wav')
+    audio.setAttribute('controls', true)
+    audio.setAttribute('src', source)
+    return audio
   }
   export default {
     data() {
       return {
         size: 'sm',
-        edit: false,
+        editableTagLoaded: false,
         recordingDuration: 10000,
         mostRecentRecordingName: 'placeholder.wav'
       }
@@ -148,8 +136,10 @@
           return this.$store.state.activeTag
         },
         set(value) {
-          this.$store.commit(types.PUT_ACTIVETAG, value)
-          playClipInALoop()
+          this.$store.dispatch(types.PUT_ACTIVETAG, value)
+          if (value) {
+            this.playClipInALoop()
+          }
         }
       },
       activeTagNote: {
@@ -157,7 +147,7 @@
           return this.$store.state.activeTag.note
         },
         set(value) {
-          this.$store.commit(types.PUT_ACTIVETAG, {note: value})
+          this.$store.dispatch(types.PUT_ACTIVETAG, {note: value})
         }
       },
       activeTagEnd: {
@@ -165,7 +155,7 @@
           return this.$store.state.activeTag.end
         },
         set(value) {
-          this.$store.commit(types.PUT_ACTIVETAG, {end: value})
+          this.$store.dispatch(types.PUT_ACTIVETAG, {end: value})
         }
       },
       activeTagStart: {
@@ -173,7 +163,7 @@
           return this.$store.state.activeTag.start
         },
         set(value) {
-          this.$store.commit(types.PUT_ACTIVETAG, {start: value})
+          this.$store.dispatch(types.PUT_ACTIVETAG, {start: value})
         }
       }
     },
@@ -189,7 +179,7 @@
       },
       openEditor: function (tag) {
         this.$store.commit(types.SET_ACTIVETAG, tag)
-        this.edit = true
+        this.editableTagLoaded = true
       },
       updateTagNote: function (note) {
         this.activeTagNote = note
@@ -201,8 +191,8 @@
         this.activeTagEnd = value
       },
       closeEditor: function () {
+        this.editableTagLoaded = false
         this.$store.commit(types.SET_ACTIVETAG, null)
-        this.edit = false
       },
       durationString: function (ms, twoUnitsOnly) {
         const duration = moment.duration(ms)
@@ -220,6 +210,27 @@
           formatted += duration.seconds() + 's'
         }
         return formatted
+      },
+      playClipInALoop: function () {
+        function playLoop() {
+          const canPlayLoop = !this.recording && this.activeTag
+          if (canPlayLoop) {
+            const audio = document.querySelector('audio')
+            const startSeconds = this.activeTag.start / 1000
+            const endSeconds = this.activeTag.end / 1000
+            if (audio.currentTime > endSeconds) {
+              audio.currentTime = startSeconds
+            }
+          }
+        }
+        const canPlayLoop = !this.recording && this.activeTag
+        if (canPlayLoop) {
+          const audio = document.querySelector('audio')
+          const startSeconds = this.activeTag.start / 1000
+          audio.currentTime = startSeconds
+          audio.ontimeupdate = playLoop
+          audio.play()
+        }
       }
     },
     mounted() {
@@ -228,18 +239,12 @@
         if (res.status === 200) {
           that.mostRecentRecordingName = res.data
           that.recordingStartMS = moment(that.mostRecentRecordingName, 'YYYY-MM-DD HH-mm-ss').valueOf()
-          let audio = document.createElement('audio')
-          let frame = document.querySelector('#audioFrame')
-          frame.innerHTML = ''
-          frame.appendChild(audio)
-          audio.setAttribute('type', 'audio/wav')
-          audio.setAttribute('controls', true)
-          audio.onloadeddata = function () {
+          let player = renderPlayer('/recordings/' + that.mostRecentRecordingName)
+          player.onloadeddata = function () {
             that.recordingDuration = Math.round(document.querySelector('audio').duration) * 1000
           }
-          let source = document.createElement('source')
-          audio.appendChild(source)
-          source.setAttribute('src', '/recordings/' + that.mostRecentRecordingName)
+          player.style.width = '100%'
+          console.log(that.mostRecentRecordingName)
         }
       })
     }
@@ -262,8 +267,5 @@
   }
   .active {
     filter: invert(100%);
-  }
-  audio {
-	width: 100%;
   }
 </style>

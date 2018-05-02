@@ -1,6 +1,8 @@
 import * as types from './mutation-types'
+
 let pulseResetTimeout = null
 const pulseDuration = 2000
+
 const mutations = {
   [types.START_RECORDING](state, value) {
     state.recording = value
@@ -8,16 +10,19 @@ const mutations = {
   [types.STOP_RECORDING](state) {
     state.recording = false
   },
-  [types.SET_ACTIVETAG](state, value) {
+  [types.SETACTIVETAGPULSE](state, value) {
     if (pulseResetTimeout) {
       clearTimeout(pulseResetTimeout)
     }
     if (value) {
-      pulseResetTimeout = setTimeout(function () { state.activeTagPulse = false }, pulseDuration)
-      state.activeTagPulse = true
-    } else {
-      state.activeTagPulse = false
+      pulseResetTimeout = setTimeout( // auto-off after pulseDuration
+        mutations[types.SET_ACTIVETAGPULSE],
+        pulseDuration,
+        false)
     }
+    state.activeTagPulse = value
+  },
+  [types.SET_ACTIVETAG](state, value) {
     state.activeTag = value
   },
   [types.SET_TAGS](state, value) {
@@ -43,7 +48,6 @@ const mutations = {
     state.tags.sort((a, b) => a.start - b.start)
     localStorage.setItem('tags', JSON.stringify(state.tags))
   },
-  // WebSocket
   SOCKET_ONOPEN(state, event) {
     state.socket.isConnected = true
   },

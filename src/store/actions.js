@@ -20,6 +20,10 @@ const actions = {
   [types.SET_TAGS]({state, commit}, value) {
     commit(types.SET_TAGS, value)
   },
+  [types.SET_ACTIVETAG]({state, commit}, value) {
+    commit(types.SET_ACTIVETAG, value)
+    commit(types.SET_ACTIVETAGPULSE, value)
+  },
   [types.POST_TAG]({commit}, tag) {
     commit(types.POST_TAG, tag)
   },
